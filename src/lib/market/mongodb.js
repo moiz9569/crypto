@@ -1,7 +1,8 @@
 import { MongoClient } from "mongodb";
+import dns from "node:dns";
 
+dns.setServers(["1.1.1.1", "1.0.0.1"]);
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB || "liquidity_bias";
 
 if (!uri) {
   console.warn("[mongo] MONGODB_URI not set — snapshot cache disabled.");
@@ -17,6 +18,7 @@ if (uri) {
       client = new MongoClient(uri);
       global._mongoClientPromise = client.connect();
     }
+
     clientPromise = global._mongoClientPromise;
   } else {
     client = new MongoClient(uri);
@@ -26,6 +28,9 @@ if (uri) {
 
 export async function getDb() {
   if (!clientPromise) return null;
+
   const c = await clientPromise;
-  return c.db(dbName);
+
+  // Uses liquidity_bias from the URI.
+  return c.db();
 }
