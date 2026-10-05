@@ -2,8 +2,6 @@
 @source "../app";
 @source "../components";
 @source "../lib";
-@import "tw-animate-css";
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 2px);
@@ -35,32 +33,34 @@
   --font-sans: "Manrope", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }
+
 :root {
   --radius: 0.375rem;
-  --background: oklch(0.118 0.008 260);
-  --foreground: oklch(0.93 0.008 250);
-  --card: oklch(0.145 0.012 260);
-  --card-foreground: oklch(0.93 0.008 250);
-  --popover: oklch(0.145 0.012 260);
-  --popover-foreground: oklch(0.93 0.008 250);
-  --primary: oklch(0.79 0.16 78);
-  --primary-foreground: oklch(0.14 0.015 70);
-  --secondary: oklch(0.19 0.012 260);
-  --secondary-foreground: oklch(0.86 0.01 250);
-  --muted: oklch(0.18 0.01 260);
-  --muted-foreground: oklch(0.59 0.025 255);
-  --accent: oklch(0.21 0.018 260);
-  --accent-foreground: oklch(0.94 0.006 250);
-  --destructive: oklch(0.63 0.225 20);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.235 0.014 260);
-  --input: oklch(0.24 0.014 260);
-  --ring: oklch(0.67 0.15 250);
-  --brand: oklch(0.8 0.16 78);
-  --positive: oklch(0.72 0.17 160);
-  --negative: oklch(0.65 0.22 18);
-  --warning: oklch(0.78 0.16 75);
+  --background: oklch(0.98 0.008 85);
+  --foreground: oklch(0.2 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 260);
+  --primary: oklch(0.82 0.16 88);
+  --primary-foreground: oklch(0.2 0.02 260);
+  --secondary: oklch(0.96 0.012 85);
+  --secondary-foreground: oklch(0.28 0.02 260);
+  --muted: oklch(0.94 0.014 85);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.93 0.035 88);
+  --accent-foreground: oklch(0.2 0.02 260);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.015 85);
+  --input: oklch(0.92 0.012 85);
+  --ring: oklch(0.75 0.14 88);
+  --brand: oklch(0.68 0.15 85);
+  --positive: oklch(0.58 0.16 155);
+  --negative: oklch(0.56 0.22 25);
+  --warning: oklch(0.7 0.15 70);
 }
+
 * {
   box-sizing: border-box;
   border-color: var(--border);
@@ -84,8 +84,10 @@ button {
   letter-spacing: 0;
 }
 ::selection {
-  background: color-mix(in oklab, var(--primary) 30%, transparent);
+  background: color-mix(in oklab, var(--primary) 40%, transparent);
 }
+
+/* ——— Landing ——— */
 .site-page {
   min-height: 100vh;
   background: var(--background);
@@ -99,6 +101,7 @@ button {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
+  box-shadow: inset 0 2px 0 0 var(--primary);
 }
 .site-nav nav {
   display: flex;
@@ -160,16 +163,18 @@ button {
   background: linear-gradient(
     120deg,
     var(--border),
-    color-mix(in oklab, var(--primary) 35%, var(--border)),
+    color-mix(in oklab, var(--primary) 55%, var(--border)),
     var(--border)
   );
   box-shadow: 0 30px 100px
     color-mix(in oklab, var(--background) 60%, transparent);
 }
+
+/* ——— Dashboard preview ——— */
 .preview-shell {
   height: 600px;
   display: flex;
-  background: oklch(0.1 0.009 260);
+  background: oklch(0.97 0.012 85);
   text-align: left;
   overflow: hidden;
 }
@@ -268,7 +273,7 @@ button {
 }
 .preview-bias {
   padding: 20px;
-  background: color-mix(in oklab, var(--positive) 7%, var(--card));
+  background: color-mix(in oklab, var(--positive) 10%, var(--card));
 }
 .preview-bias small,
 .preview-setup small,
@@ -317,8 +322,7 @@ button {
   display: block;
   font: 600 12px var(--font-mono);
 }
-.preview-grid i,
-.signal-lines i {
+.preview-grid i {
   display: block;
   height: 3px;
   margin-top: 14px;
@@ -349,6 +353,8 @@ button {
   height: 3px;
   background: var(--positive);
 }
+
+/* ——— Trust band ——— */
 .trust-band {
   padding: 58px 24px 90px;
   border-top: 1px solid var(--border);
@@ -391,6 +397,8 @@ button {
   color: var(--muted-foreground);
   font-size: 11px;
 }
+
+/* ——— Evidence band ——— */
 .evidence-band {
   max-width: 1120px;
   margin: 0 auto;
@@ -448,6 +456,8 @@ button {
   color: var(--muted-foreground);
   font-size: 11px;
 }
+
+/* ——— Solutions / features ——— */
 .solutions,
 .insights {
   max-width: 1120px;
@@ -635,6 +645,8 @@ button {
   width: 15px;
   color: var(--positive);
 }
+
+/* ——— Insights + CTA + footer ——— */
 .insights {
   border-top: 1px solid var(--border);
 }
@@ -681,6 +693,8 @@ button {
   color: var(--muted-foreground);
   font-size: 10px;
 }
+
+/* ——— Dashboard shell ——— */
 .dashboard-page {
   min-height: 100vh;
   display: flex;
@@ -695,7 +709,7 @@ button {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  background: var(--background);
+  background: var(--card);
   z-index: 30;
 }
 .watchlist-head {
@@ -715,7 +729,7 @@ button {
   gap: 8px;
   padding: 0 11px;
   border: 1px solid var(--input);
-  background: var(--card);
+  background: var(--background);
   border-radius: var(--radius);
 }
 .symbol-search svg {
@@ -756,7 +770,7 @@ button {
   cursor: pointer;
 }
 .coin-row:hover {
-  background: var(--card);
+  background: var(--background);
 }
 .coin-row.active {
   background: var(--accent);
@@ -798,11 +812,11 @@ button {
 }
 .status-badge.bull {
   color: var(--positive);
-  background: color-mix(in oklab, var(--positive) 12%, transparent);
+  background: color-mix(in oklab, var(--positive) 14%, transparent);
 }
 .status-badge.bear {
   color: var(--negative);
-  background: color-mix(in oklab, var(--negative) 12%, transparent);
+  background: color-mix(in oklab, var(--negative) 14%, transparent);
 }
 .status-badge.range {
   color: var(--muted-foreground);
@@ -831,6 +845,8 @@ button {
 .data-source i.error {
   background: var(--negative);
 }
+
+/* ——— Dashboard top ——— */
 .dash-main {
   flex: 1;
   min-width: 0;
@@ -845,8 +861,14 @@ button {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in oklab, var(--background) 90%, transparent);
+  background: color-mix(in oklab, var(--background) 92%, transparent);
   backdrop-filter: blur(8px);
+  box-shadow: inset 0 2px 0 0 var(--primary);
+}
+.dash-top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .market-title > div {
   display: flex;
@@ -894,6 +916,8 @@ button {
   max-width: 1220px;
   padding: 28px 32px 48px;
 }
+
+/* ——— Bias banner ——— */
 .bias-banner {
   padding: 23px 25px;
   display: flex;
@@ -904,12 +928,12 @@ button {
   margin-bottom: 16px;
 }
 .bias-banner.bull {
-  border-color: color-mix(in oklab, var(--positive) 25%, var(--border));
-  background: color-mix(in oklab, var(--positive) 7%, var(--background));
+  border-color: color-mix(in oklab, var(--positive) 35%, var(--border));
+  background: color-mix(in oklab, var(--positive) 10%, var(--background));
 }
 .bias-banner.bear {
-  border-color: color-mix(in oklab, var(--negative) 25%, var(--border));
-  background: color-mix(in oklab, var(--negative) 7%, var(--background));
+  border-color: color-mix(in oklab, var(--negative) 35%, var(--border));
+  background: color-mix(in oklab, var(--negative) 10%, var(--background));
 }
 .bias-banner.range {
   border-color: var(--border);
@@ -921,12 +945,12 @@ button {
   width: 46px;
   height: 46px;
   border-radius: var(--radius-lg);
-  background: color-mix(in oklab, var(--positive) 13%, transparent);
+  background: color-mix(in oklab, var(--positive) 18%, transparent);
   color: var(--positive);
 }
 .bias-banner.bear .bias-icon {
   transform: rotate(90deg);
-  background: color-mix(in oklab, var(--negative) 13%, transparent);
+  background: color-mix(in oklab, var(--negative) 18%, transparent);
   color: var(--negative);
 }
 .bias-banner small {
@@ -950,6 +974,8 @@ button {
   font: 500 12px var(--font-mono);
   color: var(--secondary-foreground);
 }
+
+/* ——— Panels / cards ——— */
 .setup-panel,
 .metric-card,
 .stat-card,
@@ -962,7 +988,7 @@ button {
 .setup-panel {
   padding: 21px 23px;
   margin-bottom: 16px;
-  border-color: color-mix(in oklab, var(--ring) 35%, var(--border));
+  border-color: color-mix(in oklab, var(--ring) 45%, var(--border));
 }
 .panel-heading {
   display: flex;
@@ -1183,8 +1209,8 @@ button {
   cursor: pointer;
 }
 .context-grid button.selected {
-  border-color: color-mix(in oklab, var(--ring) 45%, var(--border));
-  background: color-mix(in oklab, var(--ring) 7%, transparent);
+  border-color: color-mix(in oklab, var(--ring) 55%, var(--border));
+  background: color-mix(in oklab, var(--ring) 10%, transparent);
 }
 .context-grid small,
 .context-grid span {
@@ -1251,6 +1277,158 @@ button {
 .drawer-scrim {
   display: none;
 }
+
+/* ——— Auth ——— */
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--background);
+}
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.auth-card h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+.auth-sub {
+  margin: 0 0 22px;
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+.auth-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.auth-google:hover {
+  background: var(--accent);
+}
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--muted-foreground);
+  font-size: 11px;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.auth-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.auth-card label > span {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.auth-card input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 13px;
+  outline: none;
+}
+.auth-card input:focus {
+  border-color: var(--ring);
+}
+.auth-error {
+  padding: 10px 12px;
+  border: 1px solid color-mix(in oklab, var(--negative) 45%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--negative) 12%, transparent);
+  color: var(--negative);
+  font-size: 12px;
+}
+.auth-submit {
+  width: 100%;
+  justify-content: center;
+}
+.auth-switch {
+  margin: 22px 0 0;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.auth-switch button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font: inherit;
+  cursor: pointer;
+}
+.auth-switch button:hover {
+  text-decoration: underline;
+}
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--secondary);
+}
+.auth-tabs button {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: calc(var(--radius) - 2px);
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.auth-tabs button:hover {
+  color: var(--foreground);
+}
+.auth-tabs button.active {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+/* ——— Responsive ——— */
 @media (max-width: 1050px) {
   .analysis-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1397,6 +1575,14 @@ button {
   .error-state {
     min-height: calc(100vh - 104px);
   }
+  .dash-top-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dash-top-right .timeframe-tabs {
+    width: 100%;
+  }
 }
 @media (max-width: 520px) {
   .site-nav {
@@ -1476,175 +1662,5 @@ button {
   * {
     scroll-behavior: auto !important;
     transition: none !important;
-  }
-}
-.auth-shell {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  background: var(--background);
-}
-.auth-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 32px 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-}
-.auth-card h1 {
-  margin: 0 0 6px;
-  font-size: 22px;
-}
-.auth-sub {
-  margin: 0 0 22px;
-  color: var(--muted-foreground);
-  font-size: 13px;
-}
-.auth-google {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--secondary);
-  color: var(--foreground);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.15s;
-}
-.auth-google:hover {
-  background: var(--accent);
-}
-.auth-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 20px 0;
-  color: var(--muted-foreground);
-  font-size: 11px;
-}
-.auth-divider::before,
-.auth-divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-.auth-card form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.auth-card label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.auth-card label > span {
-  color: var(--muted-foreground);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.auth-card input {
-  height: 40px;
-  padding: 0 12px;
-  border: 1px solid var(--input);
-  border-radius: var(--radius);
-  background: var(--background);
-  color: var(--foreground);
-  font-size: 13px;
-  outline: none;
-}
-.auth-card input:focus {
-  border-color: var(--ring);
-}
-.auth-error {
-  padding: 10px 12px;
-  border: 1px solid color-mix(in oklab, var(--negative) 40%, transparent);
-  border-radius: var(--radius);
-  background: color-mix(in oklab, var(--negative) 10%, transparent);
-  color: var(--negative);
-  font-size: 12px;
-}
-.auth-submit {
-  width: 100%;
-  justify-content: center;
-}
-.auth-switch {
-  margin: 22px 0 0;
-  text-align: center;
-  color: var(--muted-foreground);
-  font-size: 12px;
-}
-.auth-switch a {
-  color: var(--brand);
-  text-decoration: none;
-}
-.auth-switch a:hover {
-  text-decoration: underline;
-}
-.auth-tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--secondary);
-}
-.auth-tabs button {
-  padding: 8px 12px;
-  border: 0;
-  border-radius: calc(var(--radius) - 2px);
-  background: transparent;
-  color: var(--muted-foreground);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-}
-.auth-tabs button:hover {
-  color: var(--foreground);
-}
-.auth-tabs button.active {
-  background: var(--accent);
-  color: var(--foreground);
-}
-.auth-switch button {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--brand);
-  font: inherit;
-  cursor: pointer;
-}
-.auth-switch button:hover {
-  text-decoration: underline;
-}
-.dash-top-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-@media (max-width: 780px) {
-  .dash-top-right {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .dash-top-right .timeframe-tabs {
-    width: 100%;
   }
 }
