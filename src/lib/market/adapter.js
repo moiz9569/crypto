@@ -311,14 +311,14 @@ export async function fetchMarketAnalysis(symbol) {
  * does not (backend down, still warming up, symbol not on the watchlist, timeout...).
  * Demo snapshots are flagged with `source: "demo"` so the UI can say so.
  */
-export async function fetchMarketAnalysisOrDemo(symbol) {
-  try {
-    return await fetchMarketAnalysis(symbol);
-  } catch (err) {
-    console.warn(
-      `[market] backend unavailable for ${symbol}, showing demo data:`,
-      err.message,
-    );
-    // return getDemoSnapshot(symbol, err.message);
-  }
-}
+// export async function fetchMarketAnalysisOrDemo(symbol) {
+//   try {
+//     return await fetchMarketAnalysis(symbol);
+//   } catch (err) {
+//     console.warn(
+//       `[market] backend unavailable for ${symbol}, showing demo data:`,
+//       err.message,
+//     );
+//     // return getDemoSnapshot(symbol, err.message);
+//   }
+// }

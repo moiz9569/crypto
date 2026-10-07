@@ -1,4 +1,6 @@
-export const SYMBOLS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT"];
+export const SYMBOLS = [ "BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT",
+  "DOGEUSDT", "ADAUSDT", "AVAXUSDT", "LINKUSDT", "TONUSDT",
+  "SUIUSDT", "APTUSDT", "ARBUSDT", "OPUSDT", "INJUSDT"];
 export const TIMEFRAMES = ["5m", "15m", "1h", "4h"];
 
 // Everything below here was TS interfaces — they're just docs in JS.
